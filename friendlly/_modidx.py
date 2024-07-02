@@ -5,7 +5,7 @@ d = { 'settings': { 'branch': 'master',
                 'doc_host': 'https://xl0.github.io',
                 'git_url': 'https://github.com/xl0/friendlly',
                 'lib_path': 'friendlly'},
-  'syms': { 'friendlly.core': { 'friendlly.core.fr': ('core.html#fr', 'friendlly/core.py'),
+  'syms': { 'friendlly.core': { 'friendlly.core.fr_line': ('core.html#fr_line', 'friendlly/core.py'),
                                 'friendlly.core.load_ipython_extension': ('core.html#load_ipython_extension', 'friendlly/core.py'),
                                 'friendlly.core.parse_cell': ('core.html#parse_cell', 'friendlly/core.py'),
                                 'friendlly.core.unload_ipython_extension': ('core.html#unload_ipython_extension', 'friendlly/core.py')}}}
