@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "friendlly"
+  site-url: "https://xl0.github.io/friendlly"
+  description: "Your friendlly ai assistant"
+  repo-branch: master
+  repo-url: "https://github.com/xl0/friendlly"
