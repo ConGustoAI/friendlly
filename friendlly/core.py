@@ -4,14 +4,14 @@
 __all__ = ['parse_cell', 'fr_line', 'load_ipython_extension', 'unload_ipython_extension', 'inject_js', 'add_cell', 'update_cell',
            'execute_cell']
 
-# %% ../nbs/01_core.ipynb 5
+# %% ../nbs/01_core.ipynb 6
 from typing import List, Dict, Tuple
 import textwrap
 from claudette import Client
 from IPython import get_ipython
 from IPython.display import display, clear_output, Markdown, Javascript
 
-# %% ../nbs/01_core.ipynb 6
+# %% ../nbs/01_core.ipynb 7
 # A single cell can contain multiple messages.
 # A message is either a user message (starts with %fr) or a bot message (starts with #).
 # Both can be multiline.
@@ -42,7 +42,7 @@ def parse_cell(
 
     return parsed_lines, num_magic
 
-# %% ../nbs/01_core.ipynb 7
+# %% ../nbs/01_core.ipynb 8
 models = [
     'claude-3-opus-20240229',
     'claude-3-5-sonnet-20240620',
@@ -53,13 +53,13 @@ chat_client = Client(model=models[1])
 magic_count = 0
 messages = []
 
-# %% ../nbs/01_core.ipynb 8
+# %% ../nbs/01_core.ipynb 9
 def fr_line(line: str):
     """The magic function for the %fr magic command."""
     global magic_count, messages
     ip = get_ipython()
     # raw_cell = ip.history_manager.input_hist_raw[-1]
-    raw_cell = ip.parent.get_parent()["content"]["code"]
+    raw_cell = ip.get_parent()["content"]["code"]
 
     # The cell might have multiple %lm magics, but we only want to process the last one.
     # Presumably, the previous ones would have been processed already.
@@ -91,14 +91,14 @@ def fr_line(line: str):
 
     magic_count -= 1
 
-# %% ../nbs/01_core.ipynb 12
+# %% ../nbs/01_core.ipynb 13
 def load_ipython_extension(ipython):
     ipython.register_magic_function(fr_line, 'line', magic_name='fr')
 
 def unload_ipython_extension(ipython):
     pass
 
-# %% ../nbs/01_core.ipynb 13
+# %% ../nbs/01_core.ipynb 14
 from time import sleep
 
 def inject_js(js:str):
@@ -107,10 +107,10 @@ def inject_js(js:str):
     # wait=True seems to be crucial here. Without it, if I run all cells, jupyter
     # still uses the original CodeCell.execute(), which is weird, because I see the
     # injected js code executed immediately.
-#     clear_output(wait=True)
-    clear_output()
+    clear_output(wait=True)
+#     clear_output()
 
-# %% ../nbs/01_core.ipynb 15
+# %% ../nbs/01_core.ipynb 16
 def add_cell(
         idx:int = None, # Index of the cell to add. If none, add the cell under the selected one.
         cell_type:str = "code" # Type of cell to add. Can be "code", "markdown", "raw"
@@ -138,13 +138,13 @@ def add_cell(
 
     inject_js(payload)
 
-# %% ../nbs/01_core.ipynb 16
+# %% ../nbs/01_core.ipynb 17
 def update_cell(
     idx:int, # Index of the cell to update. None to update the current cell
     text:str, # Text to set in the cell
     flush:bool = True # Notify Jupyter that the cell has been updated.
     ):
-    
+
     def escape_for_js(text):
         # Use json.dumps to escape the string for JavaScript
         escaped = json.dumps(text)
@@ -163,7 +163,7 @@ def update_cell(
          patyload = payload + "\nJupyter.notebook.events.trigger('set_dirty.Notebook', {{value: true}});"
     inject_js(payload)
 
-# %% ../nbs/01_core.ipynb 17
+# %% ../nbs/01_core.ipynb 18
 def execute_cell(
         idx:int # Index of the cell to execute. They start at 0
     ):
