@@ -14,7 +14,7 @@ from collections import defaultdict
 import warnings
 import sys
 
-# %% ../nbs/02_display.ipynb 4
+# %% ../nbs/02_display.ipynb 3
 class PassthroughCapturer(DisplayPublisher):
     """A DisplayPublisher that stores AND displays!"""
 
