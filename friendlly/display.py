@@ -12,21 +12,22 @@ from typing import List
 from PIL import Image
 from collections import defaultdict
 import warnings
+import sys
 
-# %% ../nbs/02_display.ipynb 3
+# %% ../nbs/02_display.ipynb 4
 class PassthroughCapturer(DisplayPublisher):
     """A DisplayPublisher that stores AND displays!"""
 
-    outputs: List
+    raw_outputs: List
 
     def __init__(self):
-        self.outputs = []
-        self.saved_publisher = get_ipython().display_pub
+        self._publisher = None
+        self.raw_outputs = []
 
     def publish(
         self, data, metadata=None, source=None, *, transient=None, update=False
     ):
-        self.outputs.append(
+        self.raw_outputs.append(
             {
                 "data": data,
                 "metadata": metadata,
@@ -34,37 +35,31 @@ class PassthroughCapturer(DisplayPublisher):
                 "update": update,
             }
         )
-        self.saved_publisher.publish(data, metadata=metadata, transient=transient, update=update)
+        self._publisher.publish(data, metadata=metadata, transient=transient, update=update)
 
     def clear_output(self, wait=False):
-        # self.outputs = []
-        self.saved_publisher.clear_output(wait)
-
-    def __enter__(self):
-        self.start()
-        return self
-
-    def __exit__(self, *args, **kwargs):
-        self.stop()
+        self.raw_outputs = []
+        self._publisher.clear_output(wait)
 
     def start(self):
         ip = get_ipython()
-        self.saved_publisher = ip.display_pub
+        self._publisher = ip.display_pub
         ip.display_pub = self
-        print("starting passthrough: ", id(self.saved_publisher), id(self))
 
+        # print("starting passthrough: ", id(self._publisher), id(self))
+
+    # Note: stop must be called from the cell that started the
+    # passthrough, or from the associated post-cell callback
     def stop(self):
         ip = get_ipython()
-        if self.saved_publisher:
-            ip.display_pub = self.saved_publisher
-        else:
-            warnings.warn("No saved publisher found. Display publisher not restored.")
+        assert self._publisher
+        ip.display_pub = self._publisher
 
     def get_outputs(self, with_js=False):
         coalesced_outputs = []
         display_id_map = defaultdict(list)
 
-        outputs = self.outputs
+        outputs = self.raw_outputs
         if not with_js:
             outputs = [o for o in outputs if 'application/javascript' not in o['data']]
 
