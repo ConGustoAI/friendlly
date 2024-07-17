@@ -23,28 +23,43 @@ import dotenv; dotenv.load_dotenv("../.env");
 ------------------------------------------------------------------------
 
 ``` python
-%load_ext friendlly
-```
-
-``` python
-%fr Hello there! My name is Alex.
-# Hello Alex! It's nice to meet you. I'm an AI assistant created by Anthropic to be helpful,
-# harmless, and honest. How can I help you today?
-
-%fr
-```
-
-``` python
 ```
 
     <IPython.core.display.Javascript object>
 
 ``` python
-# %fr test
+# Hello! It's nice to meet you. How can I assist you today? Feel free to ask me any questions or let
+# me know if there's a task I can help you with.
 ```
 
 ``` python
-# %%fr
-
-# Download an image of a cat and show it
+Download an image of a cat, resize the long size to 256 while keeping the apect ratio, and show it
 ```
+
+    <IPython.core.display.Javascript object>
+
+Certainly! I’ll use the `requests` library to download an image of a cat
+from a public API, resize it using `PIL` (Python Imaging Library), and
+display the result. Here’s the code to accomplish this:
+
+``` python
+import requests
+from PIL import Image
+from io import BytesIO
+
+# Download cat image
+url = "https://cataas.com/cat"
+response = requests.get(url)
+img = Image.open(BytesIO(response.content))
+
+# Resize image
+target_size = 256
+ratio = target_size / max(img.size)
+new_size = tuple(int(dim * ratio) for dim in img.size)
+resized_img = img.resize(new_size, Image.LANCZOS)
+
+# Display resized image
+resized_img
+```
+
+![](index_files/figure-commonmark/cell-6-output-1.png)
