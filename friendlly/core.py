@@ -178,7 +178,7 @@ class CellChat():
             r = self.client(claudette.mk_msgs(self.history),
                             sp=self.sp,
                             stream=True,
-                            stop=["<done>", "<run>"])
+                            stop=["</code>"])
             for token in r:
                 tokens.append(token)
                 
@@ -195,7 +195,8 @@ class CellChat():
                 for token in r:
                     tokens.append(token)
                     code_reply += token
-                    self.update_code(code_reply.strip())
+                    prefix = f"%%fr +{self.code_idx - self.idx} reply\n" if self.code_idx else "%%fr reply"
+                    self.update_code(prefix + code_reply.strip())
                 
             if self.client.stop_reason == "stop_sequence":
                 tokens += self.client.stop_sequence
@@ -207,12 +208,13 @@ class CellChat():
                 return True
             
         except BaseException as e:
-            self.display_handle.update(Markdown(f"🚫 {repr(e)}"))
-            get_ipython().showtraceback()
+            raise e
+#             display(Markdown(f"🚫 {repr(e)}"))
+#             get_ipython().showtraceback()
 
 
 
-# %% ../nbs/01_core.ipynb 17
+# %% ../nbs/01_core.ipynb 18
 # def load_ipython_extension(ipython):
 #     patch_kernel()
 #     ipython.register_magic_function(fr_line, 'line', magic_name='fr')

@@ -58,17 +58,34 @@ def patch_kernel():
 
 
         const cell_index = Jupyter.notebook.find_cell_index(this)
-        const cell_id = this.id
+
         let extras = {
-            cell_index :cell_index,
-            current_id: cell_id
+            cell_index : cell_index,
+            cell_id: this.id
         }
-        // if (this.get_text().trim().startsWith("##fr")) {
-            extras = {
-                all_cells: Jupyter.notebook.get_cells(),
-                ...extras
+        let text = this.get_text().trim()
+        let firstLine = text.split('\\n')[0];
+
+        // Parse the magic command
+        if (firstLine.startsWith("%%fr")) {
+            // Separate args by spaces or tabs
+            let parts = firstLine.split(/\\s+|\\t+/);
+            let magic = parts[0];
+            if (parts.length > 1) {
+                let magic_args = parts.slice(1)
+                if (magic_args[0].startsWith('+') && !isNaN(parseInt(magic_args[0].slice(1)))) {
+                    let n = parseInt(magic_args[0].slice(1));
+                    let start_pos = Math.max(0, cell_index - n);
+                    cells = Jupyter.notebook.get_cells().slice(start_pos, cell_index);
+
+                    extras = {
+                        cells_above: cells,
+                        ...extras
+                    }
+
+                }
             }
-        // }
+        }
 
         this.last_msg_id = this.kernel.execute(
             this.get_text(),
