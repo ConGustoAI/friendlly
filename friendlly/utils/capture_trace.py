@@ -6,6 +6,7 @@ __all__ = ['strip_junk', 'SaveTraceback']
 # %% ../../nbs/03_utils.capture_trace.ipynb 2
 import re
 from IPython import get_ipython
+from .misc import nict
 
 # %% ../../nbs/03_utils.capture_trace.ipynb 3
 def strip_junk(text):
@@ -22,11 +23,11 @@ class SaveTraceback:
         self.tracebacks = []
 
     def _showtraceback(self, etype, value, stb):
-        self.tracebacks.append( {
-            "etype": etype,
-            "value": value,
-            "stb": "\n".join([ strip_junk(s) for s in stb]) if isinstance(stb, list) else stb
-        } )
+        self.tracebacks.append( nict(
+            ename=etype,
+            evalue=", ".join(value.args),
+            traceback= stb # ["\n".join([ strip_junk(s) for s in stb]) if isinstance(stb, list) else stb]
+        ))
         self._saved_showtraceback(etype, value, stb)
 
     def register(self):

@@ -27,39 +27,326 @@ import dotenv; dotenv.load_dotenv("../.env");
 
     <IPython.core.display.Javascript object>
 
+    <IPython.core.display.Javascript object>
+
 ``` python
 # Hello! It's nice to meet you. How can I assist you today? Feel free to ask me any questions or let
 # me know if there's a task I can help you with.
 ```
 
 ``` python
-Download an image of a cat, resize the long size to 256 while keeping the apect ratio, and show it
+# %%fr 
+# Download an image of a cat, resize to 250 on long side, then very briefly describe it in the style of Jeremy Howard
 ```
 
     <IPython.core.display.Javascript object>
 
-Certainly! I’ll use the `requests` library to download an image of a cat
-from a public API, resize it using `PIL` (Python Imaging Library), and
-display the result. Here’s the code to accomplish this:
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+    <IPython.core.display.Javascript object>
+
+Certainly! I’ll download an image of a cat, resize it, and then describe
+it briefly in Jeremy Howard’s style. Let’s break this down into steps:
+
+<details>
+<summary style="display: list-item">
+🧠
+</summary>
+
+1.  We’ll use the requests library to download an image.
+2.  We’ll use PIL (Python Imaging Library) to process and resize the
+    image.
+3.  After resizing, we’ll display the image.
+4.  Then, I’ll provide a brief description in Jeremy Howard’s style.
+
+</details>
 
 ``` python
+# %%fr +2 reply
 import requests
 from PIL import Image
 from io import BytesIO
 
-# Download cat image
+# Download an image of a cat
 url = "https://cataas.com/cat"
 response = requests.get(url)
 img = Image.open(BytesIO(response.content))
 
-# Resize image
-target_size = 256
-ratio = target_size / max(img.size)
-new_size = tuple(int(dim * ratio) for dim in img.size)
+# Resize the image
+max_size = 250
+ratio = max_size / max(img.size)
+new_size = tuple([int(x*ratio) for x in img.size])
 resized_img = img.resize(new_size, Image.LANCZOS)
 
-# Display resized image
+# Display the resized image
 resized_img
 ```
 
 ![](index_files/figure-commonmark/cell-6-output-1.png)
+
+Alright, let’s describe this image in Jeremy Howard’s style:
+
+“Right, so we’ve got this absolutely cracking image of a cat here. It’s
+a real beauty, isn’t it? We’ve got this tabby cat, looking straight at
+the camera with these piercing eyes. It’s got its paw up on what looks
+like a scratching post or some furniture. The composition is just
+brilliant - it’s like the cat is peeking out, probably thinking about
+causing some mischief. You can almost feel its curiosity through the
+screen. It’s a fantastic example of how cats can turn any moment into a
+photo opportunity. Truly remarkable creatures, cats.”
