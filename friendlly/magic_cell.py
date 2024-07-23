@@ -436,14 +436,13 @@ def fr_cell(line=None, cell=None):
     # This schedules the execution of the next cell.
     if code_idx:
         execute_cell(code_idx)
-    
-    if is_reply:
-        # We've created a lot of invisible JS display outputs. Unfortunaely I don't think there is a way
-        # to clear them without removing everying.
-        clear_output()
-        # Re-display the outputs.
 
-        
+    # We've created a lot of invisible JS display outputs. Unfortunaely I don't think there is a way
+    # to clear them without removing everying.
+    clear_output()
+
+    if is_reply:
+        # Re-display the outputs.
         for d in disp_capturer.raw_outputs:
             ip.display_pub.publish(**d)
         if stdout.getvalue(): print(stdout.getvalue())
