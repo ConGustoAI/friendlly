@@ -22,10 +22,7 @@ import dotenv; dotenv.load_dotenv("../.env");
 
 ------------------------------------------------------------------------
 
-``` python
-# Hello! It's nice to meet you. How can I assist you today? Feel free to ask me any questions or let
-# me know if there's a task I can help you with.
-```
+    %load_ext friendlly
 
 ``` python
 # %%fr 
@@ -69,7 +66,7 @@ resized_img = img.resize(new_size, Image.LANCZOS)
 resized_img
 ```
 
-![](index_files/figure-commonmark/cell-6-output-1.png)
+![](index_files/figure-commonmark/cell-4-output-1.png)
 
 Alright, let’s describe this image in Jeremy Howard’s style:
 
