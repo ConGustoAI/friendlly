@@ -2,5 +2,10 @@ website:
   sidebar:
     contents:
       - index.ipynb
-      - 01_core.ipynb
-      - 02_display.ipynb
+      - 01_magic_cell.ipynb
+      - 01_magic_line.ipynb
+      - 02_utils.capture_display.ipynb
+      - 03_utils.capture_io.ipynb
+      - 03_utils.capture_trace.ipynb
+      - 05_utils.nbclassic.ipynb
+      - 06_utils.misc.ipynb
