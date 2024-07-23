@@ -9,6 +9,18 @@
 pip install friendlly
 ```
 
+## ⚠️ At least for now, FriendLLy only works in Jupyter nbclassic!
+
+Due to tight intergration with the front-end, only `jupyter nbclassic`
+(aka jupyter 6) is supported initially. You can install it alongside
+`jupyter notebook` or `juter lab` without causing any conflicts
+
+    pip install nbclassic
+
+And rut it with
+
+    jupyter nbclassic
+
 ## How to use
 
 ``` python
