@@ -107,7 +107,10 @@ def display_data_to_messages(dsp):
 
     claudette_msgs = [text_msg(m) for m in messages]
     if images:
-        claudette_msgs.append(img_msg(images[0])) # Grab only one image
+        image = images[0] # Grab only one image
+        if isinstance(image, str):
+            image = base64.b64decode(image)
+        claudette_msgs.append(img_msg(image))
 
     return claudette_msgs
 

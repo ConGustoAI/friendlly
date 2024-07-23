@@ -80,3 +80,45 @@ This is exactly the kind of image that would make for a fantastic
 dataset in computer vision tasks. You could use it for all sorts of
 things - cat breed classification, pose estimation, you name it.
 Absolutely fascinating, isn’t it?”
+
+## Looking at existing cells
+
+``` python
+from PIL import Image
+Image.open("cat2.jpg")
+```
+
+![](index_files/figure-commonmark/cell-5-output-1.png)
+
+``` python
+# %%fr +1
+# Describe the image
+```
+
+The image shows a cat sitting upright on what appears to be a
+light-colored surface or floor. The cat has distinctive features typical
+of an Abyssinian breed:
+
+1.  Slender, athletic build
+2.  Large, alert ears
+3.  Almond-shaped eyes
+4.  Reddish-brown or ruddy coat color
+5.  Ticked fur pattern, giving it a wild appearance
+
+The cat is sitting in a poised, attentive posture with its tail wrapped
+neatly around its body. Its gaze is directed off to the side, giving it
+an alert and curious expression. The background appears to be a plain
+white or light-colored wall, which contrasts nicely with the cat’s
+warm-toned coat.
+
+This image showcases the elegant and regal appearance that Abyssinian
+cats are known for, highlighting their unique coat color and sleek
+physique.
+
+## Messing around
+
+You might have noticed the `reply` added to the magic of the generated
+cells. This is the only way FriendLLy distinguishes between user- and
+assistant-generated cells (plus some heuristics for Markdown cells). You
+can add such cells yourself, and FriendLLy will think they are
+assistant-generated.
