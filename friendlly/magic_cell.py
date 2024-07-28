@@ -54,7 +54,7 @@ If you realize that you need to use a module that is not imported earlier, impor
 """
 
 
-# %% ../nbs/01_magic_cell.ipynb 7
+# %% ../nbs/01_magic_cell.ipynb 9
 import sys
 import base64
 import json
@@ -88,13 +88,13 @@ from claudette import text_msg, img_msg, mk_msg
 from IPython import get_ipython
 from IPython.display import display, clear_output, Markdown, Javascript
 
-# %% ../nbs/01_magic_cell.ipynb 8
+# %% ../nbs/01_magic_cell.ipynb 10
 # Patch the Jupyter nbclassic kernel.
 if detect_environment() == "nbclassic":
     nbclassic_patch_kernel()
 
 
-# %% ../nbs/01_magic_cell.ipynb 9
+# %% ../nbs/01_magic_cell.ipynb 11
 def display_data_to_messages(dsp):
     plain_text = dsp.get("text/plain")
     text = list(filter(lambda x:x[1], [
@@ -173,7 +173,7 @@ def parse_above_cell(cell):
         return is_friendlly, is_reply, code_text, output_blks
     return False, False, None, []
 
-# %% ../nbs/01_magic_cell.ipynb 10
+# %% ../nbs/01_magic_cell.ipynb 12
 def cells_to_messages(cells):
     messages = []
 
@@ -208,7 +208,7 @@ def cells_to_messages(cells):
 
     return [nict(m) for m in messages]
 
-# %% ../nbs/01_magic_cell.ipynb 11
+# %% ../nbs/01_magic_cell.ipynb 13
 def merge_messages(msgs):
 
     # first, merge by role
@@ -231,7 +231,7 @@ def merge_messages(msgs):
     return role_messages
 
 
-# %% ../nbs/01_magic_cell.ipynb 12
+# %% ../nbs/01_magic_cell.ipynb 14
 def make_cell_from_captured(source:str, res, stdout:str, stderr:str, displays, tracebacks):
     ip = get_ipython()
     cell = nict()
@@ -251,7 +251,7 @@ def make_cell_from_captured(source:str, res, stdout:str, stderr:str, displays, t
 
     return cell
 
-# %% ../nbs/01_magic_cell.ipynb 13
+# %% ../nbs/01_magic_cell.ipynb 15
 config = nict(
     environment=detect_environment(),
     autorun=detect_environment() == "nbclassic",
@@ -282,14 +282,14 @@ def handle_config(cell):
         config.update(new_config)
 
         if config.autorun and config.environment != "nbclassic":
-            warnings.warn_once("Autorun is only supported in nbclassic environment at the moment.")
+            warnings.warn("Autorun is only supported in nbclassic environment at the moment.")
 
         if config.md_cells and config.environment != "nbclassic":
-            warnings.warn_once("Inserting Markdown cells is only supported in nbclassic environment at the moment.")
+            warnings.warn("Inserting Markdown cells is only supported in nbclassic environment at the moment.")
         if config.api_key:
-            warnings.warn_once("FIY It's safer to set ANTHROPIC_API_KEY in the environment or even better .env file and use dotenv package to load it.")
+            warnings.warn("FIY It's safer to set ANTHROPIC_API_KEY in the environment or even better .env file and use dotenv package to load it.")
 
-# %% ../nbs/01_magic_cell.ipynb 14
+# %% ../nbs/01_magic_cell.ipynb 16
 class CellChat():
     def __init__(self, config):
         self.config = config
@@ -411,7 +411,7 @@ class CellChat():
 #             display(Markdown(f"🚫 {repr(e)}"))
 #             get_ipython().showtraceback()
 
-# %% ../nbs/01_magic_cell.ipynb 15
+# %% ../nbs/01_magic_cell.ipynb 17
 chat = None
 def fr_cell(line=None, cell=None):
     global chat
@@ -433,13 +433,13 @@ def fr_cell(line=None, cell=None):
             cells_above = []
             if config.environment == "nbclassic":
                 if "cells_above" not in header.content:
-                    warnings.warn_once("Jupyter did not send any of the above cells")
+                    warnings.warn("Jupyter did not send any of the above cells")
                 else:
                     cells_above = header.content.cells_above;
             elif config.environment == "vscode":
                 idx, cells_above = vscode_get_cells(num_cells)
             else:
-                warnings.warn_once("Only nbclassic and vscode environments can access previous cells")
+                warnings.warn("Only nbclassic and vscode environments can access previous cells")
             prev_messages = cells_to_messages(cells_above)
 
     if is_config:

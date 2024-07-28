@@ -9,15 +9,23 @@
 pip install friendlly
 ```
 
-## ⚠️ At least for now, FriendLLy only works in Jupyter nbclassic!
+## Front-end support
 
-Due to tight intergration with the front-end, only `jupyter nbclassic`
-(aka jupyter 6) is supported initially. You can install it alongside
-`jupyter notebook` or `juter lab` without causing any conflicts
+| Front-end | Markdown | Markdown cell | Code cell | Access current outputs | Access previous cells/outputs | Autorun cells |
+|----|----|----|----|----|----|----|
+| Jupyter nbclassic | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Jupyter VSCode | ✅ | 🚫 | ✅ | ✅ | ✅ | 🚫 |
+| Jupyter Lab/notebook 7 | ✅ | 🚫 | ✅ | ✅ | 🚫 | 🚫 |
+
+⚠️ FriendLLy works best in Jupyter nbclassic, and is useable in VSCode.
+Jupyter lab/notebook 7 support is somewhat limited for now.
+
+You can install `jupyter nbclassic` alongside `jupyter notebook` or
+`juter lab` without causing any conflicts:
 
     pip install nbclassic
 
-And rut it with
+And run it with
 
     jupyter nbclassic
 
@@ -37,7 +45,7 @@ import dotenv; dotenv.load_dotenv("../.env");
     %load_ext friendlly
 
 ``` python
-# %%fr 
+# %%fr
 # Download an image of a cat, resize to 250 on long side, then very briefly describe it in the style of Jeremy Howard
 ```
 
