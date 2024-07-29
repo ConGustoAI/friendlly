@@ -10,7 +10,6 @@ import textwrap
 import claudette
 from IPython import get_ipython
 from IPython.display import display, clear_output, Markdown, Javascript
-from .utils import ExecCBs
 
 # %% ../nbs/01_magic_line.ipynb 6
 # A single cell can contain multiple messages.
