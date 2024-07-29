@@ -6,13 +6,9 @@ __all__ = ['PassthroughCapturer']
 # %% ../nbs/02_capture_display.ipynb 2
 from IPython.core.displaypub import DisplayPublisher
 from IPython.core.display_functions import _new_id
-from IPython.display import display, clear_output, Javascript
 from IPython import get_ipython
 from typing import List
-from PIL import Image
 from collections import defaultdict
-from io import BytesIO
-import base64
 
 from .utils import nict
 
