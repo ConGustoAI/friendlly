@@ -3,6 +3,11 @@
 # %% auto 0
 __all__ = ['strip_comments', 'handle_config']
 
+# %% ../nbs/03_config.ipynb 1
+# from friendlly.utils import nict
+from .notebook import detect_environment, update_code_self
+import warnings
+
 # %% ../nbs/03_config.ipynb 2
 def strip_comments(source: str):
     """Strips Python # comments"""
@@ -15,8 +20,11 @@ def handle_config(cell, global_config):
     # If the cell was empty, show the config
     if not cell:
         def value_to_str(v):
-            if isinstance(v, str) and "\n" in v:
-                return f'"""{v}"""'
+            if isinstance(v, str):
+                if "\n" in v:
+                    return f'"""{v}"""'
+                else:
+                    return f"'{str(v)}'"
             return str(v)
 
         cell = "\n".join([f"{k}={value_to_str(v)}" for k, v in global_config.items()])

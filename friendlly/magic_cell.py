@@ -355,7 +355,7 @@ def fr_cell(line=None, cell=None):
             prev_messages = cells_to_messages(cells_above)
 
     if is_config:
-        handle_config(cell)
+        handle_config(cell, config)
         return
 
     if idx is None:

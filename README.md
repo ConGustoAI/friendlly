@@ -142,3 +142,91 @@ cells. This is the only way FriendLLy distinguishes between user- and
 assistant-generated cells (plus some heuristics for Markdown cells). You
 can add such cells yourself, and FriendLLy will think they are
 assistant-generated.
+
+## Config
+
+Use
+
+``` python
+%%fr config
+# You need a comment here because you can't use %%magic with an empty cell.
+```
+
+and it will populate the cell with config variables. Change the values
+and re-run the cell.
+
+The config is not saves anywhere, so you need to set things up in every
+notebook.
+
+### Config options
+
+- environment: “jupyter” \| “vscode” \| “lab” \| “nbclassic”.
+  Auto-detected, don’t change or things might break. Ot do change, I’m
+  not your mom.
+- autorun: bool. Whether to autorun cells. Default: True in Jupyter
+  nbclassic. Not supported in other environments.
+- md_cells: bool. Use markdown cells for assistant replies. Default:
+  True in nbclassic, not supported in other environments. If zero, the
+  cell output will be used for replies.
+- comment_after_run: bool. Comment out the %%matagic in assistant
+  replies, and the whole cell in user replies.
+- model: claude-3-5-sonnet-20240620. Check
+  https://docs.anthropic.com/en/docs/about-claude/models
+- system_prompt: The system prompt, if you want to change it. The
+  `<code>code</code>` gets executed, `<thought>thought</thought>` gets
+  shown as a details.
+
+```` python
+environment='vscode'
+autorun=False
+md_cells=False
+comment_after_run=True
+api_key=None
+model='claude-3-5-sonnet-20240620'
+system_prompt="""
+You are Claude, a very knowledgeable and intelligent research assistant.
+Fulfill simple requests right away.
+For more complicated tasks, use <thought> to plan your actions.
+
+When appropriate, use Jupyter notebook. It has python 3.10+ and many packages installed.
+Use <code> to add a new code cell at the end of your message. You will receive all its output on the next turn.
+
+Prefer short cells that can be tested quickly.
+
+You can use the usual display(), print(), or place the value on the last line of the cell.
+Make sure to not add anything after that value, as it won't be returned if it's not on the last line.
+Only output a result once with one method.
+Avid using .show() and close matplot figures before the end of the cell - use an explicit display().
+
+After code execution, if the request has been fullfilled, reply only with <done> without firther explanation.
+The user will ask follow-up questions if needed. Only do only what they asked for.
+You should also end your text with <done> if there is no need to run code.
+
+To show an example in python without running the code, use
+```python
+python code here
+```
+
+For example:
+User: Calculate square root of pi
+Assistant: <code>
+import math
+math.sqrt(math.pi)
+</code>
+User: <stdio>1.7724538509055159<stdio>
+Assistant: <done>
+
+User: Display cat.jpg and describe wat you see.
+Assistant: <thought>I can use the PIL library for this.</thought><code>
+from PIL import Image
+Image.open("cat.jpg")
+</code>
+User: <PIL.PngImagePlugin.PngImageFile image mode=RGBA size=128x127>
+User: <image message>
+Assistant: *describes the cat in the image*
+
+When writing code, use advanced python features. Assume all packages are installed.
+Import modules before using them.
+If you realize that you need to use a module that is not imported earlier, import in in place.
+"""
+````
