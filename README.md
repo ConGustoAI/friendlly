@@ -160,13 +160,12 @@ notebook.
 
 ### Config options
 
-- environment: “jupyter” \| “vscode” \| “lab” \| “nbclassic”.
-  Auto-detected, don’t change or things might break. Ot do change, I’m
-  not your mom.
-- autorun: bool. Whether to autorun cells. Default: True in Jupyter
-  nbclassic. Not supported in other environments.
+- environment: “vscode” \| “lab” \| “nbclassic”. Auto-detected, don’t
+  change or things might break. Or do change it, I’m not your mom.
+- autorun: bool. Autorun cells produced by the assistant. Default: True
+  in Jupyter nbclassic. Not supported in other environments.
 - md_cells: bool. Use markdown cells for assistant replies. Default:
-  True in nbclassic, not supported in other environments. If zero, the
+  True in nbclassic, not supported in other environments. If False, the
   cell output will be used for replies.
 - comment_after_run: bool. Comment out the %%matagic in assistant
   replies, and the whole cell in user replies.
