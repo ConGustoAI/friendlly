@@ -1,4 +1,4 @@
-__version__ = "0.2.4"
+__version__ = "0.2.5"
 
 from .magic_cell import fr_cell
 from .magic_line import fr_line
