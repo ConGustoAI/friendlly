@@ -82,6 +82,7 @@ from .capture_display import PassthroughCapturer
 from .capture_io import TeeIO
 import claudette
 from claudette import text_msg, img_msg, mk_msg
+from anthropic import Client
 
 
 from IPython import get_ipython
@@ -128,7 +129,8 @@ class CellChat():
         self.config = config
         # self.display_handle = None # Used when config.md_cell=False
         self.history = []
-        self.client = claudette.Client(model=self.config.model)
+        claude_client = Client(api_key=self.config.api_key)
+        self.client = claudette.Client(model=self.config.model, cli=claude_client)
 
     def update_markdown(self, text):
         raise NotImplementedError
@@ -159,6 +161,7 @@ class CellChat():
             state = "md"
 
             r = self.client(messages,
+
                             sp=self.config.system_prompt,
                             stream=True,
                             stop=["</code>", "<done>"])
